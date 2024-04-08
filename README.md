@@ -1,5 +1,7 @@
 # Rdot (JavaScript Signals for Godot! 🥳)
 
+![Rdot Logo](rdot.png)
+
 ## What is Rdot?
 
 Rdot is inspired by most modern Web Frameworks that use a reactive programming model. It enables you to write GDScript with syntax similar to [Vue](https://vuejs.org/) / [Solid](https://www.solidjs.com/) / [Qwik](https://qwik.dev/) and many other Frameworks... but in Godot!
