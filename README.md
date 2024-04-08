@@ -1,6 +1,6 @@
 # Rdot (JavaScript Signals for Godot! 🥳)
 
-![Rdot Logo](rdot.png)
+![Rdot Logo](banner.png)
 
 ## What is Rdot?
 
