@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://84syvybksu48"]
+
+[ext_resource type="Script" path="res://demo/main.gd" id="1_0rhfi"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_0rhfi")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer"]
+layout_mode = 2
+
+[node name="Sub" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sub"
+
+[node name="Add" type="Button" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Add"
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Value: 1"
