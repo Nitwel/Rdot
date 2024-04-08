@@ -6,6 +6,30 @@ static func state(value: Variant, options: Dictionary={}):
 static func computed(computation: Callable, options: Dictionary={}):
 	return RComputed.new(computation, options)
 
+static func bind(target, prop, value, watch_signal=null):
+	var graph = RdotGraph.getInstance()
+
+	var watch_c = func(new_value):
+		value.value = new_value
+
+	var c = computed(func(_arg):
+		var oldValue=target.get(prop)
+
+		if oldValue != value.value:
+			target.set(prop, value.value)
+	)
+
+	if watch_signal:
+		watch_signal.connect(watch_c)
+
+	graph.watcher.watch([c])
+	c.do_get()
+
+	return func():
+		graph.watcher.unwatch([c])
+		if watch_signal:
+			watch_signal.disconnect(watch_c)
+
 static func effect(callback: Callable):
 	var graph = RdotGraph.getInstance()
 

@@ -30,6 +30,8 @@ R.effect(func(_ignore):
 )
 ```
 
+More examples can be found in the [demo](https://github.com/Nitwel/Rdot/tree/main/demo) folder.
+
 ### Explanation
 
 `R.` (R-dot) is the namespace for all Rdot functions.
@@ -54,4 +56,21 @@ var double = R.computed(func(_ignore):
 R.effect(func(_ignore):
     print("Double changed: ", double.value)
 )
+```
+
+## API
+
+```gdscript
+## Creates a reactive state
+R.state(initialValue: Variant) -> RdotState
+
+## Creates a computed state based on the returned value of the function
+R.computed(func: Callable) -> RdotComputed
+
+## Runs the function each time a reactive value in the function changes
+R.effect(func: Callable) -> Callable
+
+## Updates the target property when the value changes
+## When a watch_signal is provided, the value will be updated when the signal is emitted (2 way binding)
+R.bind(target: Object, property: String, value: RdotState, watch_signal: Signal = null) -> Callable
 ```
