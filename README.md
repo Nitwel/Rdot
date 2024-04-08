@@ -72,9 +72,11 @@ R.state(initialValue: Variant) -> RdotState
 R.computed(func: Callable) -> RdotComputed
 
 ## Runs the function each time a reactive value in the function changes
+## Returns a function to stop the effect
 R.effect(func: Callable) -> Callable
 
 ## Updates the target property when the value changes
 ## When a watch_signal is provided, the value will be updated when the signal is emitted (2 way binding)
+## Returns a function to stop the binding
 R.bind(target: Object, property: String, value: RdotState, watch_signal: Signal = null) -> Callable
 ```
