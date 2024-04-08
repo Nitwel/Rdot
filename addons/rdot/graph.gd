@@ -198,7 +198,7 @@ static func producerRemoveLiveConsumerAtIndex(node: RdotNode, idx: int):
     node.liveConsumerNode[idx] = node.liveConsumerNode[lastIdx]
     node.liveConsumerIndexOfThis[idx] = node.liveConsumerIndexOfThis[lastIdx]
 
-    node.liveConsumerNode.resize.pop_back()
+    node.liveConsumerNode.pop_back()
     node.liveConsumerIndexOfThis.pop_back()
 
     if idx < node.liveConsumerNode.size():
