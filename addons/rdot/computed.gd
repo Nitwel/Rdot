@@ -20,7 +20,7 @@ static func computedGet(node: RdotComputed) -> Variant:
 	graph.producerUpdateValueVersion(node)
 	graph.producerAccessed(node)
 
-	assert(node.value != State.ERRORED, "Error in computed.")
+	assert(node.state != State.ERRORED, "Error in computed.")
 
 	return node.value
 
