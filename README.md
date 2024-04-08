@@ -6,6 +6,10 @@
 
 Rdot is inspired by most modern Web Frameworks that use a reactive programming model. It enables you to write GDScript with syntax similar to [Vue](https://vuejs.org/) / [Solid](https://www.solidjs.com/) / [Qwik](https://qwik.dev/) and many other Frameworks... but in Godot!
 
+![example](example.gif)
+
+The most common use case for Rdot is to synchronize the state of your game with the UI, although it can be used for other things as well.
+
 ## ⚠️ Disclaimer ⚠️
 
 This should be seen as a proof of concept and **not ready for production**. While most logic was ported over, there still needs to be more testing to be done.
