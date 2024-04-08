@@ -1,6 +1,4 @@
-# Rdot
-
-🥳🥳 JavaScript Signals for Godot! 🥳🥳
+# Rdot (JavaScript Signals for Godot! 🥳)
 
 ## What is Rdot?
 
@@ -27,5 +25,31 @@ $SubtractButton.button_down.connect(func(): counter.value -= 1)
 
 R.effect(func(_ignore):
     $CounterLabel.text = displayText.value
+)
+```
+
+### Explanation
+
+`R.` (R-dot) is the namespace for all Rdot functions.
+
+`R.state` is a function that creates a reactive state. It returns an object with a `value` property that you can read and write to.
+The methods `do_get` and `do_set(value)` are also available but behave the same as `value`.
+```gdscript
+var counter = R.state(0)
+```
+
+`R.computed` recalculated it's value each time a reactive value in the function changes. It returns an object with a `value` property that you can read.
+The first argument can be ignored but has to be there for Godot to not complain.
+```gdscript
+var double = R.computed(func(_ignore):
+    return counter.value * 2
+)
+```
+
+`R.effect` can be used to synchronize the reactive state with the UI. It its rerun each time a reactive value in the function changes.
+
+```gdscript
+R.effect(func(_ignore):
+    print("Double changed: ", double.value)
 )
 ```
