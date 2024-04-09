@@ -1,6 +1,6 @@
 class_name R
 
-static func state(value: Variant, options: Dictionary={}):
+static func state(value: Variant, options: Dictionary={}) -> Resource:
 	if value is Dictionary:
 		return store(value)
 
@@ -77,7 +77,7 @@ static func effect(callback: Callable):
 		
 		graph.watcher.unwatch([c])
 
-class State:
+class State extends Resource:
 	var node: RdotState
 	var value = null:
 		get:

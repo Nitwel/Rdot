@@ -1,4 +1,4 @@
-extends Object
+extends Resource
 class_name RdotStore
 
 var _proxied_value = {}
