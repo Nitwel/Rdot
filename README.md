@@ -116,10 +116,10 @@ R.effect(func(_ignore):
 
 ```gdscript
 ## Creates a reactive state
-R.state(initialValue: Variant) -> R.RState | RdotStore
+R.state(initialValue: Variant) -> R.State | RdotStore
 
 ## Creates a computed state based on the returned value of the function
-R.computed(func: Callable) -> R.RComputed
+R.computed(func: Callable) -> R.Computed
 
 ## Runs the function each time a reactive value in the function changes
 ## Returns a function to stop the effect
