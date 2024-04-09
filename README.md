@@ -125,6 +125,9 @@ R.computed(func: Callable) -> R.RComputed
 ## Returns a function to stop the effect
 R.effect(func: Callable) -> Callable
 
+## Creates a Store based off of a Dictionary
+R.store(initialValue: Dictionary) -> RdotStore
+
 ## Updates the target property when the value changes
 ## When a watch_signal is provided, the value will be updated when the signal is emitted (2 way binding)
 ## Returns a function to stop the binding
