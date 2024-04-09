@@ -116,10 +116,10 @@ R.effect(func(_ignore):
 
 ```gdscript
 ## Creates a reactive state
-R.state(initialValue: Variant) -> R.State | RdotStore
+R.state(initialValue: Variant) -> R.RdotState | RdotStore
 
 ## Creates a computed state based on the returned value of the function
-R.computed(func: Callable) -> R.Computed
+R.computed(func: Callable) -> R.RdotComputed
 
 ## Runs the function each time a reactive value in the function changes
 ## Returns a function to stop the effect
@@ -131,7 +131,7 @@ R.store(initialValue: Dictionary) -> RdotStore
 ## Updates the target property when the value changes
 ## When a watch_signal is provided, the value will be updated when the signal is emitted (2 way binding)
 ## Returns a function to stop the binding
-R.bind(target: Object, property: String, value: R.State | R.Computed, watch_signal: Signal = null) -> Callable
+R.bind(target: Object, property: String, value: R.RdotState | R.RdotComputed, watch_signal: Signal = null) -> Callable
 
 ## For binding to a store
 R.bind(target: Object, property: String, store: RdotStore, key: String, watch_signal: Signal = null) -> Callable
