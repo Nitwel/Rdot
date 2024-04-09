@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://84syvybksu48"]
+[gd_scene load_steps=7 format=3 uid="uid://84syvybksu48"]
 
 [ext_resource type="StyleBox" uid="uid://8iymk5osuhqr" path="res://demo/style_box_flat.tres" id="1_ev572"]
 [ext_resource type="Script" path="res://demo/text_example.gd" id="2_blgcj"]
 [ext_resource type="Script" path="res://demo/summation_example.gd" id="3_ergyd"]
 [ext_resource type="Script" path="res://demo/slider_example.gd" id="3_xcnpp"]
 [ext_resource type="Script" path="res://demo/tab_example.gd" id="4_83hkj"]
+[ext_resource type="Script" path="res://demo/store_example.gd" id="6_2rbh3"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -38,7 +39,7 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
-columns = 4
+columns = 5
 
 [node name="TextExample" type="PanelContainer" parent="CanvasLayer/Control/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -151,3 +152,26 @@ text = "Second Tab"
 [node name="ThirdTabLabel" type="Label" parent="CanvasLayer/Control/MarginContainer/GridContainer/TabExample/VBoxContainer"]
 layout_mode = 2
 text = "Third Tab"
+
+[node name="StoreExample" type="PanelContainer" parent="CanvasLayer/Control/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_ev572")
+script = ExtResource("6_2rbh3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer/GridContainer/StoreExample"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Control/MarginContainer/GridContainer/StoreExample/VBoxContainer"]
+layout_mode = 2
+text = "Store Example"
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/MarginContainer/GridContainer/StoreExample/VBoxContainer"]
+layout_mode = 2
+text = "Change Me"
+
+[node name="LineEdit2" type="LineEdit" parent="CanvasLayer/Control/MarginContainer/GridContainer/StoreExample/VBoxContainer"]
+layout_mode = 2
+text = "Change Me"
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/GridContainer/StoreExample/VBoxContainer"]
+layout_mode = 2

@@ -1,12 +1,36 @@
 class_name R
 
 static func state(value: Variant, options: Dictionary={}):
-	return RState.new(value, options)
+	if value is Dictionary:
+		return store(value)
+
+	return State.new(value, options)
+
+static func store(value: Dictionary):
+	return RdotStore.new(value)
 
 static func computed(computation: Callable, options: Dictionary={}):
-	return RComputed.new(computation, options)
+	return Computed.new(computation, options)
 
-static func bind(target, prop, value, watch_signal=null):
+## DIY overloading of
+## bind(target, prop, value)
+## bind(target, prop, value, watch_signal)
+## bind(target, prop, store, key, watch_signal)
+static func bind(target, prop, value, arg1=null, arg2=null):
+	if value is RdotStore:
+		return _bind_store(target, prop, value, arg1, arg2)
+
+	if value is State or value is Computed:
+		return _bind_state(target, prop, value, arg1)
+
+	assert(false, "Invalid arguments to bind, value must be a R.State or a RdotStore")
+
+static func _bind_store(target, prop, store: RdotStore, key, watch_signal=null):
+	store._access_property(key)
+
+	return _bind_state(target, prop, store._proxied_value[key], watch_signal)
+
+static func _bind_state(target, prop, value, watch_signal=null):
 	var graph = RdotGraph.getInstance()
 
 	var watch_c = func(new_value):
@@ -53,7 +77,7 @@ static func effect(callback: Callable):
 		
 		graph.watcher.unwatch([c])
 
-class RState:
+class State:
 	var node: RdotState
 	var value = null:
 		get:
@@ -85,7 +109,7 @@ class RState:
 
 		RdotState.signalSetFn.call(ref, value)
 
-class RComputed:
+class Computed:
 	var node: RdotComputed
 	var value = null:
 		get:
@@ -109,7 +133,7 @@ class RComputed:
 	func do_get():
 		return RdotComputed.computedGet(node)
 
-class RWatcher:
+class Watcher:
 	var node: RdotNode
 
 	func _init(notify: Callable):
@@ -124,7 +148,7 @@ class RWatcher:
 	## signals: Array[RState | RComputed]
 	func _assertSignals(signals: Array):
 		for s in signals:
-			assert(s is RState or s is RComputed, "Watcher expects signals to be RState or RComputed")
+			assert(s is State or s is Computed, "Watcher expects signals to be RState or RComputed")
 
 	func watch(signals:=[]):
 		_assertSignals(signals)

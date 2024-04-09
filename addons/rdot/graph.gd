@@ -16,7 +16,7 @@ var epoch := 1
 var postSignalSetFn := Callable()
 var watcherPending := false
 
-var watcher = R.RWatcher.new(func(_arg):
+var watcher = R.Watcher.new(func(_arg):
     if watcherPending:
         return
 
